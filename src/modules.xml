@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modulegroup>
+  <name>Search</name>
+  <description>
+    This module represents a general search engine. It depends on loader and dataproviders to
+    get the results to be gathered.
+  </description>
+  <modules>
+    <!-- livesearch page -->
+    <module type="page" 
+            guid="1b8f92eac84663054fd70dad30035c90" 
+            name="Search Page" 
+            class="SearchPage" file="Page.php">
+      Livesearch page content module.
+    </module>
+    <!-- connector -->
+    <module type="connector" 
+            guid="d317710ff2c7a431f1f64b086121b57d" 
+            name="Search Connector" 
+            class="SearchConnector" 
+            file="Connector.php">
+      Livesearch connector.
+    </module>
+  </modules>
+  <tables>
+  </tables>
+</modulegroup>

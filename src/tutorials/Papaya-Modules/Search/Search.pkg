@@ -1,0 +1,208 @@
+<refentry id="{@id}">
+  <refnamediv>
+    <refname>Search package description</refname>
+    <refpurpose>
+      The Search package enhances a HTML input field to a live search field.
+    </refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <author>
+      papaya Software GmbH
+      <authorblurb>
+        {@link mailto:info@papaya-cms.com papaya Software GmbH}
+      </authorblurb>
+    </author>
+  </refsynopsisdiv>
+  {@toc}
+  <refsect1 id="{@id Search}">
+    <title>Introduction</title>
+    <para>
+      The Search module enhances a HTML input field with a type ahead sugggest functionallity.
+    </para>
+  </refsect1>
+  <refsect1 id="{@id classdiagramm}">
+    <title>Entity relation diagramm</title>
+    <para>
+      <graphic fileref="./tutorials/Papaya-Modules/Search/figures/classdiagramm.png"/>
+    </para>
+  </refsect1>
+  <refsect1 id="{@id dependencies}">
+    <title>Prerequisits</title>
+    <para>
+      This section tells you about obediences and required sources to run this module. 
+    </para>
+    <refsect2>
+      <title>JavaScript</title>
+      <para>
+        The following javascript components are mendatory for the module to work.
+      </para>
+      <ol>
+        <li>{@link http://jquery.com jQuery} JavaScript framework in revision >= 1.3</li>
+        <li>autocompleter.js</li>
+        <li>suggest.config.js</li>
+      </ol>
+      
+    </refsect2>
+  </refsect1>
+  <refsect1 id="{@id installation}">
+    <title>Installation</title>
+    <para>
+      This section will show you howto integrate this functionallity into a papaya site.
+    </para>
+    <refsect2 id="{@id installation-preparations}">
+      <title>Preparations</title>
+      <para>
+        To be able to integrate the Search into a papaya site a number of preparations are to 
+        be done.
+      </para>
+    </refsect2>
+    <refsect2 id="{@id installation-setup}">
+      <title>Setup</title>
+      <para>
+        After the proparations are complete, apply the following tasks to finalize the installation
+        procedure.
+      </para>
+      <refsect3 id="{@id installation-setup-javascript}">
+        <title>Loading JavaScript</title>
+        <para>
+          After copying the javascript source (autocompleter.js) file into 
+        </para>
+      </refsect3>
+    </refsect2>
+  </refsect1>
+  <refsect1>
+    <title>Appendix</title>
+    <refsect2>
+        <title>Description of 'suggest.config.js'</title>
+        <para>
+          This section shall enable the reader to setup and configure the Javascript part of this module.
+        </para>
+        <refsect3>
+          <title>Options</title>
+          <para>
+            The 'suggest.config.js' comes with a number of configuration options, which are listed in this section.
+          </para>
+          <refsect4>
+            <title>class definitions</title>
+            <ul>
+              <li>
+                <b>(string) url</b><br/>
+                URL to be called to get result data to be displayed as suggestion list.
+              </li>
+              <li>
+                <b>(string) inputClass</b><br/>
+                The name of the CSS class of the input field.
+              </li>
+              <li>
+                <b>(string) resultsClass</b><br/>
+                The name of the CSS class of the result container.
+              </li>
+              <li>
+                <b>(string) loadingClass</b><br/>
+                The name of the CSS class of the container keeping the loading indicator.
+              </li>
+              <li>
+                <b>(string) lineSeparator</b><br/>
+                String to be used as line separator in the suggest list
+              </li>
+              <li>
+                <b>(integer) width</b><br/>
+                Width of the suggest box. If not set or 0 (zero) the width  of the corresponding input
+                field will be set.
+              </li>
+              <li>
+                <b>(integer) height</b><br/>
+                Height of the suggest box. If not set or 0 (zero) it is ajusted to the amount of 
+                suggest items.
+              </li>
+              <li>
+                <b>(integer) minChars</b><br/>
+                Minimum amount of characters to be entered before a request will be send. Default 
+                is set to 1.
+              </li>
+              <li>
+                <b>(integer) maxItemsToShow</b><br/>
+                Amount of shown suggest items regradless the amount of returned items by request.
+              </li>
+              <li>
+                <b>(integer) delay</b><br/>
+                Timeout after the last input before a request will be sent.
+              </li>
+              <li>
+                <b>(boolean) selectFirst</b><br/>
+                Preselects the first result item if set to true.
+              </li>
+              <li>
+                <b>(boolean) matchCase</b><br/>
+                If set to TRUE the search string is handled case sensitiv, if set to false it will
+                match in any case.
+              </li>
+              <li>
+                <b>(boolean) matchSubset</b><br/>
+                If true the search string may be elsewhere in the result item. If set to false
+                the result item has to be an exact match
+              </li>
+              <li>
+                <b>(boolean) matchContains</b><br/>
+                If 'matchSubset' is true this switch decides if the search string might be a substring 
+                of the result string.
+              </li>
+              <li>
+                <b>(boolean) selectOnly</b><br/>
+                Decision switch to preselect the sugestion if only one item was found.
+              </li>
+              <li>
+                <b>(boolean) autoFill</b><br/>
+                If set to true the search string will be completed with the best matching result string.
+              </li>
+              <li>
+                <b>(object) extraParams</b><br/>
+                A named array of additional parameters.
+              </li>
+              <li>
+                <b>(function) formatItem</b><br/>
+                  Callback function to be called if the innerHtml of each suggest item shall be
+                  formatted.
+              </li>
+              <li>
+                <b>(string) onItemSelect</b><br/>
+                Callback function will be called if a suggest item get the focus.
+              </li>
+              <li>
+                <b>(function) onFindValue</b><br/>
+                Callback function to be called if a 
+              </li>
+            </ul>
+            <para>
+              Example:
+              <programlisting role="javascript">
+      function selectItem(li) {
+        return; 
+      }
+      function formatItem(row) {
+        return row[0];
+      }
+      
+      $(document).ready(function() {
+        $("#zip_input").autocomplete("zip_autocompleter", { 
+          minChars:1, 
+          matchSubset:0, 
+          matchContains:0, 
+          cacheLength:50, 
+          onItemSelect:selectItem, 
+          formatItem:formatItem, 
+          selectOnly:1,
+          autoFill: false,
+          maxItemsToShow:-1,
+          extraParams:{},
+          width:138,
+          height:200
+          });
+      });
+              </programlisting>
+            </para>
+          </refsect4>
+        </refsect3>
+      </refsect2>
+  </refsect1>
+</refentry>
